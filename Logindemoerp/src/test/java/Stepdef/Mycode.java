@@ -38,6 +38,7 @@ public class Mycode {
 	{
 		Logindem.dr.findElement(By.xpath(Mycode.prop.getProperty("Feemanager.logo")));
 	    Takefee.action.moveToElement(Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.Managefee")))).build().perform();
+	    Takefee.action.moveToElement(Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.excel")))).click().build().perform();
 	}
 	
 	//Fee excel upload
@@ -74,6 +75,15 @@ public class Mycode {
     public static void selectfeecheckbox()
     {
     	Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.selectfeecheckbox"))).click();
+    }
+    
+    public static void uploadbuttonvalidation()
+    {
+    	Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.excelupload.uploadbutton"))).click();
+    	if(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.uploadbutton.validation"))).isEnabled())
+    	{
+    		//String error=
+    	}
     }
     
   

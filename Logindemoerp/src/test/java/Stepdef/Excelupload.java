@@ -73,7 +73,6 @@ public class Excelupload {
 		@Then("^Uploadexcel$")
 		public void uploadexcel() throws Throwable {
 			Mycode.Locatemanagefee();
-		    Takefee.action.moveToElement(Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.excel")))).click().build().perform();
 		    Logindem.dr.switchTo().frame("Fees Excel Upload");
 		    Mycode.browse();
 		    Mycode.properties();
