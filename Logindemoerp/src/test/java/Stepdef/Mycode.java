@@ -82,7 +82,19 @@ public class Mycode {
     	Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.excelupload.uploadbutton"))).click();
     	if(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.uploadbutton.validation"))).isEnabled())
     	{
-    		//String error=
+    		String error=Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.uploadbutton.validation"))).getText();
+    		System.out.println(error);
+    		if("Please select file to upload.".equals(error))
+    		{
+    			System.out.println("Validation message as expected!!");
+    		}
+    		else
+    		{
+    			System.out.println("Validation message not as expected!!");
+    		}
+    	}
+    	else{
+    		System.out.println("Please check!! no validation is showing");
     	}
     }
     
