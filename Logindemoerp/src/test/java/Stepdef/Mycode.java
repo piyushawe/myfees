@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class Mycode {
 	
-	// Global functions
+	// Global function
 	
 	static Properties prop;
 
