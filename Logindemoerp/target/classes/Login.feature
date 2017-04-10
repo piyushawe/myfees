@@ -8,6 +8,3 @@ Feature: Logindemoerp
     Examples: 
       |username|password|
       |admin|Admin@987|
-      |admin|admin|
-      |          | Admin@987 |
-      | admin    |           |

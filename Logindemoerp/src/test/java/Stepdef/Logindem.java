@@ -23,20 +23,20 @@ public class Logindem{
 	public void logingdetails_and(String arg1, String arg2) throws Throwable {
 	 //arg1.trim();
 	 //arg2.trim();
-		String login="admin";
-		    String password1="Admin@987";
-		    if(login.equals(arg1) && password1.equals(arg2) )
-		    {
+		//String login="admin";
+		  //  String password1="Admin@987";
+		   // if(login.equals(arg1) && password1.equals(arg2) )
+		   // {
 		    	dr.findElement(By.id("txtUserName")).sendKeys(arg1);
 		    	dr.findElement(By.id("txtPassword")).sendKeys(arg2);
-		    	System.out.println("Successful");
-		    }
-		    else 
-		    {
+		    	//System.out.println("Successful");
+		   // }
+		   // else 
+		  //  {
 		    	
-		    	System.out.println("UnSuccessful");
-		    }
-		    dr.quit();
+		    	//System.out.println("UnSuccessful");
+		   // }
+		    //dr.quit();
 		   
 	}
 

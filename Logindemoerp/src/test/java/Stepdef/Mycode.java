@@ -4,12 +4,15 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.junit.Assert; 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
 public class Mycode {
 	
 	// Global function
+	
 	
 	static Properties prop;
 
@@ -60,6 +63,7 @@ public class Mycode {
     {
     	Select sr1= new Select(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.dropdown.adjustfrom"))));
     	sr1.selectByValue("s1");
+    	
     }
     
     public static void verifybutton()
@@ -77,7 +81,7 @@ public class Mycode {
     	Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.selectfeecheckbox"))).click();
     }
     
-    public static void uploadbuttonvalidation()
+	public static void validationinexcelupload()
     {
     	Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.excelupload.uploadbutton"))).click();
     	if(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.uploadbutton.validation"))).isEnabled())
@@ -96,7 +100,26 @@ public class Mycode {
     	else{
     		System.out.println("Please check!! no validation is showing");
     	}
+    
+    //Validating date format
+    Select s1 = new Select(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.Dateformat"))));
+    String option= s1.getFirstSelectedOption().getText();
+   //Assert.assertEquals("dd-MM-yyyy", option);
+    Assert.assertSame("Date Format is incorrect", "dd-MM-yyyy", option);
+    
+    //Validating Select installment 
+    Select s2= new Select(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.selectinstallment"))));
+    s2.selectByValue("0");
+    String installment= Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.installmentvalidation"))).getText();
+    if("Please select Installment".equals(installment))
+    {
+    	System.out.println("Proper installment validation is showing!!");
+    }
+    else
+    {
+    	System.out.println("Either No or wrong validation is showing!!");
     }
     
-  
+    }
+    
 }
