@@ -107,7 +107,7 @@ public class Excelupload {
 
 		@Then("^assertdateformat$")
 		public void assertdateformat() throws Throwable {
-		    // Write code here that turns the phrase above into concrete actions
+		    Mycode.validationinexcelupload();
 		   
 		}
 
