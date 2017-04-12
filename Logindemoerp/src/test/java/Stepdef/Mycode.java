@@ -121,5 +121,14 @@ public class Mycode {
     }
     
     }
+	public static void submitfeebutton()
+	{
+		Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.submitfee"))).click();
+	}
+	
+	public static void verifyifcheckboxselected()
+	{
+		
+	}
     
 }

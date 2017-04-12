@@ -113,13 +113,13 @@ public class Excelupload {
 
 		@Then("^clickonverify$")
 		public void clickonverify() throws Throwable {
-		    // Write code here that turns the phrase above into concrete actions
+		    Mycode.verifybutton();
 		    
 		}
 
 		@Then("^clickonsubmitfee$")
 		public void clickonsubmitfee() throws Throwable {
-		    // Write code here that turns the phrase above into concrete actions
+		    Mycode.submitfeebutton();
 		    
 		}
 
