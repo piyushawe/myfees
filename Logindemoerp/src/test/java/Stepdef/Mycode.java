@@ -2,11 +2,12 @@ package Stepdef;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 
 import org.junit.Assert; 
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class Mycode {
@@ -83,6 +84,7 @@ public class Mycode {
     
 	public static void validationinexcelupload()
     {
+		//Validate is excel uploaded
     	Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.excelupload.uploadbutton"))).click();
     	if(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.uploadbutton.validation"))).isEnabled())
     	{
@@ -126,9 +128,28 @@ public class Mycode {
 		Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.submitfee"))).click();
 	}
 	
-	public static void verifyifcheckboxselected()
+	public static int verifyifcheckboxselected()
 	{
-		
+		WebElement table= Logindem.dr.findElement(By.cssSelector(prop.getProperty("Feemanager.excelupload.tablecss")));
+		@SuppressWarnings("unchecked")
+		List<WebElement> row=(List<WebElement>) table.findElement(By.tagName("tr"));
+		int count=0;
+		for(int i =0; i<row.size();i++)
+		{
+			String status=Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.status"))).getText();
+			
+			if(status=="Ready To Upload")
+			{
+				boolean attr=Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.Checkbox"))).isSelected();
+				if(attr=true)
+				{
+					count++;
+				
+				}	
+				
+			}
+		}
+		return count;
 	}
     
 }

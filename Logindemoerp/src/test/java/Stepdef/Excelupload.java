@@ -119,6 +119,23 @@ public class Excelupload {
 
 		@Then("^clickonsubmitfee$")
 		public void clickonsubmitfee() throws Throwable {
+		int count12=Mycode.verifyifcheckboxselected();
+		if(count12==0)
+		{
+			Mycode.submitfeebutton();
+			if(Logindem.dr.findElement(By.id(Mycode.prop.getProperty("Feemanager.excelupload.norecordforsave"))).isEnabled())
+			{
+			String val=Logindem.dr.findElement(By.id(Mycode.prop.getProperty("Feemanager.excelupload.norecordforsave"))).getText();
+			if("No Record For Save".equals(val))
+			{
+				System.out.println("Validation is showing as expected!!");
+			}
+			else
+			{
+			System.out.println("Either no or wrong validation is coming!!");	
+			}
+		}
+		}
 		    Mycode.submitfeebutton();
 		    
 		}
