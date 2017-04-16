@@ -45,7 +45,7 @@ public class Mycode {
 	    Takefee.action.moveToElement(Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.excel")))).click().build().perform();
 	}
 	
-	//Fee excel upload
+	//Fee excel uploada
 	
 	public static void browse() throws IOException
 	{
