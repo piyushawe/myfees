@@ -17,6 +17,7 @@ public class Mycode {
 	
 	
 	
+	
 	static Properties prop;
 
     public static void sendsms()
