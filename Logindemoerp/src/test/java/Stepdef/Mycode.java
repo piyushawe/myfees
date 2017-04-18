@@ -194,6 +194,7 @@ public class Mycode {
 			   int acrow= sh.getPhysicalNumberOfRows();
 			   int accol= sh.getRow(0).getPhysicalNumberOfCells();
 			   double arr[] []= new double[acrow][accol];	
+			   String arr1[][]=new String[acrow][accol] ;
 			   for(int i=1;i<acrow;i++)
 			   {
 				   for(int j =0;j<accol;j++)
@@ -204,6 +205,11 @@ public class Mycode {
 						   arr[i][j]=sh.getRow(i).getCell(j).getNumericCellValue();
 						   
 					   }
+					   if(sh.getRow(i).getCell(j).getCellTypeEnum()==CellType.STRING)
+					   {
+						   
+					   arr1[i][j]=sh.getRow(i).getCell(j).getStringCellValue();
+				   }
 				   }
 			   }
 			   /* Iterator<Row> it=sh.iterator();
