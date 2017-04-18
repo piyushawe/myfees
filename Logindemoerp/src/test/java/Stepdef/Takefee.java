@@ -12,7 +12,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class Takefee{
-	
+	//global funct
 	static Actions action=null;
 @When("^Logindetails$")
 public void logindetails() throws Throwable {
