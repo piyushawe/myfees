@@ -13,14 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 public class Mycode {
 	
 	// Global function
-<<<<<<< HEAD
-	
-	
-	//glo
-=======
-	//logic
-	
->>>>>>> branch 'master' of ssh://git@github.com/piyushawe/myfees.git
+
 	
 	
 	
