@@ -1,19 +1,31 @@
 package Stepdef;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Assert; 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class Mycode {
 	
-	// Global function	
+	// Global function
 	
+	static Actions action=null;
 	static Properties prop;
 
     public static void sendsms()
@@ -44,7 +56,7 @@ public class Mycode {
 	    Takefee.action.moveToElement(Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.excel")))).click().build().perform();
 	}
 	
-	//Fee excel uploada
+	//Fee excel upload
 	
 	public static void browse() throws IOException
 	{
@@ -150,5 +162,77 @@ public class Mycode {
 		}
 		return count;
 	}
+	
+	//Student registration
+	
+	 public  static void studentregistration()
+	 {
+		 Logindem.dr.findElement(By.xpath(Mycode.prop.getProperty("Admission.logo"))).click();
+		 action = new Actions(Logindem.dr);
+		    WebElement wb=Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Admission.mastersetting")));
+		    action.moveToElement(wb).build().perform();
+		    action.moveToElement(Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.excelupload.studentregistration")))).click().build().perform();
+	 }
+	 
+	 public static void registerstudent()
+	 {
+		 try{
+				String loc = "D:\\regsitration data.xlsx";
+			    File file= new File(loc);
+			    FileInputStream in= new FileInputStream(file);
+			    Workbook wrb=null;
+			    String sr= loc.substring(loc.indexOf("."));
+			    if(sr.equals(".xls"))
+			    {
+			    	wrb=new HSSFWorkbook(in);	
+			    
+			    }
+			    else if(sr.equals(".xlsx")) {
+			    	wrb=new XSSFWorkbook(in);
+			    }
+			    Sheet sh= wrb.getSheetAt(0);
+			   int acrow= sh.getPhysicalNumberOfRows();
+			   int accol= sh.getRow(0).getPhysicalNumberOfCells();
+			   double arr[] []= new double[acrow][accol];	
+			   for(int i=1;i<acrow;i++)
+			   {
+				   for(int j =0;j<accol;j++)
+				   {
+					   
+					   if(sh.getRow(i).getCell(j).getCellTypeEnum()==CellType.NUMERIC)
+					   {
+						   arr[i][j]=sh.getRow(i).getCell(j).getNumericCellValue();
+						   
+					   }
+				   }
+			   }
+			   /* Iterator<Row> it=sh.iterator();
+			    while(it.hasNext()){	
+			    		    
+			    	Row row=it.next();
+			    	Iterator <Cell> ce= row.cellIterator();
+			    	int j=0;
+			    	while(ce.hasNext()){
+			    		Cell cel= ce.next();
+			    		//int a = cel.getCellTypeEnum();
+			    		if(cel.getCellTypeEnum() == CellType.NUMERIC)
+			    		{		    		
+			    			double value =cel.getNumericCellValue();		    			
+			    		}
+			    		else if (cel.getCellTypeEnum()== CellType.STRING);
+			    		{
+			    			System.out.println(cel.getNumericCellValue());
+			    		}
+			    		j++;
+			    	}
+			    }*/
+			    
+				}catch(FileNotFoundException f){
+				f.printStackTrace();}
+				catch(IOException e){
+					e.printStackTrace();
+				}
+				
+	 }
     
 }
