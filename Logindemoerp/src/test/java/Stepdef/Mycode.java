@@ -174,6 +174,16 @@ public class Mycode {
 		    action.moveToElement(Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.excelupload.studentregistration")))).click().build().perform();
 	 }
 	 
+	 public  static void Locatetransactionreport()
+	 {
+		 Logindem.dr.findElement(By.xpath(Mycode.prop.getProperty("Feemanager.logo"))).click();
+		 action = new Actions(Logindem.dr);
+		    WebElement wb=Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.transactionreport")));
+		    action.moveToElement(wb).build().perform();
+		    
+	 }
+	 
+	 
 	 public static void registerstudent()
 	 {
 		 try{
@@ -286,6 +296,9 @@ public class Mycode {
 	 }
 	 public static void feereportverification()
 	 {
+		 //locate Daily Fee Collection DateWise report
+		 action.moveToElement(Logindem.dr.findElement(By.linkText(prop.getProperty("Feemanager.collection")))).build().perform();
+		 action.moveToElement(Logindem.dr.findElement(By.linkText(prop.getProperty("Feemanager.collection.DailyFeeCollectionDateWise")))).click().build().perform();
 		 
 	 }
     
