@@ -210,7 +210,9 @@ public class Mycode {
 						   
 					   arr1[i][j]=sh.getRow(i).getCell(j).getStringCellValue();
 				   }
+					   
 				   }
+				   
 			   }
 			   /* Iterator<Row> it=sh.iterator();
 			    while(it.hasNext()){	
@@ -239,6 +241,52 @@ public class Mycode {
 					e.printStackTrace();
 				}
 				
+	 }
+	 
+	 //Report verification
+	 
+	 static Sheet sh1=null;
+	 static int row=0;
+	 static String arr3[][];
+	 public static void readingreportexcel() throws IOException
+	 {
+		
+		 String Excelpath="D:\\Report testing.xlsx";
+		 File fl1= new File(Excelpath);
+		 try {
+			FileInputStream infl=new FileInputStream(fl1);
+			Workbook wb2 =null;
+			String str=Excelpath.substring(Excelpath.indexOf("."));
+			if(str==".xlsx")
+			{
+				wb2=new XSSFWorkbook(infl);
+			}
+			if(str==".xls")
+			{
+				wb2=new HSSFWorkbook(infl);
+			}
+			sh1 = wb2.getSheetAt(0);
+			row= sh1.getPhysicalNumberOfRows();
+			int col=sh1.getRow(0).getPhysicalNumberOfCells();
+			arr3=new String[row][col];
+			for(int i=0;i<row;i++)
+			{
+				for(int j=0;j<col;j++)
+				{
+					arr3[i][j]=sh1.getRow(i).getCell(j).getStringCellValue();
+							
+				}
+			}
+						
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	 }
+	 public static void feereportverification()
+	 {
+		 
 	 }
     
 }
