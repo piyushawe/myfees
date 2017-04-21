@@ -19,7 +19,9 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Mycode {
 	
@@ -294,12 +296,29 @@ public class Mycode {
 		}
 		
 	 }
-	 public static void feereportverification()
+	 @SuppressWarnings("deprecation")
+	public static void feereportverification()
 	 {
 		 //locate Daily Fee Collection DateWise report
 		 action.moveToElement(Logindem.dr.findElement(By.linkText(prop.getProperty("Feemanager.collection")))).build().perform();
 		 action.moveToElement(Logindem.dr.findElement(By.linkText(prop.getProperty("Feemanager.collection.DailyFeeCollectionDateWise")))).click().build().perform();
+		 Logindem.dr.switchTo().frame("Feemanager.Daily.frame.FeeCollectionDateWise");
+		 Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.dailyFeecollection.fromdate"))).click();
+		 Select sr1 = new Select(Logindem.dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.year"))));
+		 sr1.selectByValue("2016");
+		 Select sr2 = new Select(Logindem.dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.Month"))));
+		 sr2.selectByValue("3");
+		 Logindem.dr.findElement(By.xpath(prop.getProperty("Feemanager.dailyFeecollection.Date"))).click();
 		 
+		 Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.dailyFeecollection.todate"))).click();
+		 Select sr3 = new Select(Logindem.dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.yearto"))));
+		 sr3.selectByValue("2017");
+		 Select sr4 = new Select(Logindem.dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.Monthto"))));
+		 sr4.selectByValue("2");
+		 Logindem.dr.findElement(By.xpath(prop.getProperty("Feemanager.dailyFeecollection.Dateto"))).click();
+		 Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.showbtn"))).click();
+		 WebDriverWait wb=new WebDriverWait(Logindem.dr,10);
+		 wb.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("Feemanager.dailyfeecollection.Titlexpath"),"DAILY FEE COLLECTION DATE WISE"));
 	 }
     
 }
