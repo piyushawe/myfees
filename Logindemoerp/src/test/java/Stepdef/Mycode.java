@@ -339,6 +339,16 @@ public class Mycode {
 		 {
 			  atrr=dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.showbtn"))).getAttribute("value");
 		 }
+		 String ajaxattr= dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.loaderAjax"))).getAttribute("display");
+		 while(ajaxattr!="none")
+		 {
+			 ajaxattr= dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.loaderAjax"))).getAttribute("display");
+		 }
+		 String imgAttr = dr.findElement(By.id("ctl00_ContentPlaceHolder1_ReportViewer1_AsyncWait_Wait")).getAttribute("display");
+		 while(imgAttr!="none")
+		 {
+			 imgAttr=dr.findElement(By.id("Feemanager.dailyfeecollection.imgloader")).getAttribute("display");
+		 }
 		 File scrFile = ((TakesScreenshot)dr).getScreenshotAs(OutputType.FILE);
 		// Now you can do whatever you need to do with it, for example copy somewhere
 		FileUtils.copyFile(scrFile, new File("D:\\screensht\\dailyfeecollectiondatewise.png"));		

@@ -7,7 +7,7 @@ import cucumber.api.java.en.When;
 
 public class Verifyfeesreports{
 	@Given("^URL(\\d+)$")
-	public void url(int arg1) throws Throwable {
+	public void url() throws Throwable {
 	   Mycode.properties();
 		Mycode.url();
 	    
@@ -15,13 +15,13 @@ public class Verifyfeesreports{
 
 	@When("^Locatereports$")
 	public void locatereports() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
+		Mycode.locatetransactionreport();
 	   
 	}
 
 	@Then("^verifyreport$")
 	public void verifyreport() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
+		Mycode.feereportverification();
 	   
 	}
 }
