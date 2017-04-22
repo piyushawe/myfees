@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -17,6 +18,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Assert; 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -297,7 +300,7 @@ public class Mycode {
 		
 	 }
 	 @SuppressWarnings("deprecation")
-	public static void feereportverification()
+	public static void feereportverification() throws IOException
 	 {
 		 //locate Daily Fee Collection DateWise report
 		 action.moveToElement(Logindem.dr.findElement(By.linkText(prop.getProperty("Feemanager.collection")))).build().perform();
@@ -317,8 +320,16 @@ public class Mycode {
 		 sr4.selectByValue("2");
 		 Logindem.dr.findElement(By.xpath(prop.getProperty("Feemanager.dailyFeecollection.Dateto"))).click();
 		 Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.showbtn"))).click();
-		 WebDriverWait wb=new WebDriverWait(Logindem.dr,10);
-		 wb.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("Feemanager.dailyfeecollection.Titlexpath"),"DAILY FEE COLLECTION DATE WISE"));
+		// WebDriverWait wb=new WebDriverWait(Logindem.dr,300);
+		 //wb.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("Feemanager.dailyfeecollection.Titlexpath"),"DAILY FEE COLLECTION DATE WISE"));
+		 String atrr=Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.showbtn"))).getAttribute("value");
+		 while(atrr!="Show")
+		 {
+			  atrr=Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.showbtn"))).getAttribute("value");
+		 }
+		 File scrFile = ((TakesScreenshot)Logindem.dr).getScreenshotAs(OutputType.FILE);
+		// Now you can do whatever you need to do with it, for example copy somewhere
+		FileUtils.copyFile(scrFile, new File("D:\\screensht\\dailyfeecollectiondatewise.png"));
 	 }
     
 }
