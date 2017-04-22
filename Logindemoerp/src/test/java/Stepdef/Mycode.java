@@ -41,7 +41,9 @@ public class Mycode {
 		    dr=new ChromeDriver();
 		    dr.manage().window().maximize();
 			dr.get("http://qaerp.franciscanecare.net/Secure/");
-		   
+			dr.findElement(By.id("txtUserName")).sendKeys("admin");
+	    	dr.findElement(By.id("txtPassword")).sendKeys("Admin@987");
+		    dr.findElement(By.id(prop.getProperty("Login.Button"))).click();
 	 }
     public static void sendsms()
     {
@@ -341,6 +343,10 @@ public class Mycode {
 		// Now you can do whatever you need to do with it, for example copy somewhere
 		FileUtils.copyFile(scrFile, new File("D:\\screensht\\dailyfeecollectiondatewise.png"));		
 	 }
-	
+	public static void locatetransactionreport()
+	{
+		dr.findElement(By.xpath(Mycode.prop.getProperty("Feemanager.logo")));
+		Takefee.action.moveToElement(dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.transactionreport")))).build().perform();
+	}
     
 }

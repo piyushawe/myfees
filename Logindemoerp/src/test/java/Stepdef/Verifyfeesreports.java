@@ -8,7 +8,8 @@ import cucumber.api.java.en.When;
 public class Verifyfeesreports{
 	@Given("^URL(\\d+)$")
 	public void url(int arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
+	   Mycode.properties();
+		Mycode.url();
 	    
 	}
 
