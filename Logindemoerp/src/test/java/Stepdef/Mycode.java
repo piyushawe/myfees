@@ -20,7 +20,9 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -32,19 +34,27 @@ public class Mycode {
 	
 	static Actions action=null;
 	static Properties prop;
-
+	static WebDriver dr=null;
+	 public static void url()
+	 {
+		 System.setProperty("webdriver.chrome.driver", "D:\\selenium drivers\\chromedriver_win32new\\chromedriver.exe");
+		    dr=new ChromeDriver();
+		    dr.manage().window().maximize();
+			dr.get("http://qaerp.franciscanecare.net/Secure/");
+		   
+	 }
     public static void sendsms()
     {
-    	Logindem.dr.findElement(By.id("Feemanager.checkbox.sendsms")).click();
+    	dr.findElement(By.id("Feemanager.checkbox.sendsms")).click();
     }
 	  public static void selectinstallment (String s2)
 	    {
-	    	Select sr1= new Select(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.dropdown.installment"))));
+	    	Select sr1= new Select(dr.findElement(By.id(prop.getProperty("Feemanager.dropdown.installment"))));
 	    	sr1.selectByValue("s2");
 	    }
 	public static void dropdownfeetype(String s)
     {
-    	Select sr1= new Select(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.dropdown.feetype"))));
+    	Select sr1= new Select(dr.findElement(By.id(prop.getProperty("Feemanager.dropdown.feetype"))));
     	sr1.selectByValue("s");
     }
     
@@ -56,9 +66,9 @@ public class Mycode {
 	}
 	public static void Locatemanagefee()
 	{
-		Logindem.dr.findElement(By.xpath(Mycode.prop.getProperty("Feemanager.logo")));
-	    Takefee.action.moveToElement(Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.Managefee")))).build().perform();
-	    Takefee.action.moveToElement(Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.excel")))).click().build().perform();
+		dr.findElement(By.xpath(Mycode.prop.getProperty("Feemanager.logo")));
+	    Takefee.action.moveToElement(dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.Managefee")))).build().perform();
+	    Takefee.action.moveToElement(dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.excel")))).click().build().perform();
 	}
 	
 	//Fee excel upload
@@ -66,45 +76,45 @@ public class Mycode {
 	public static void browse() throws IOException
 	{
 		properties();
-		Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.browse"))).click();
+		dr.findElement(By.id(prop.getProperty("Feemanager.browse"))).click();
 	    try {
 			Runtime.getRuntime().exec("D:\\autoit.exe");
 		} catch (IOException e) {
 			
 			e.printStackTrace();
 		}
-	    Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.uploadbutton"))).click();	
+	    dr.findElement(By.name(prop.getProperty("Feemanager.uploadbutton"))).click();	
 	}
 	
     public static void adjustfrom(String s1)
     {
-    	Select sr1= new Select(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.dropdown.adjustfrom"))));
+    	Select sr1= new Select(dr.findElement(By.id(prop.getProperty("Feemanager.dropdown.adjustfrom"))));
     	sr1.selectByValue("s1");
     	
     }
     
     public static void verifybutton()
     {
-    	Logindem.dr.findElement(By.name("Feemanager.verifybutton")).click();
+    	dr.findElement(By.name("Feemanager.verifybutton")).click();
     }
     
     public static void finewaiveoffcheckbox()
     {
-    	Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.finewaiveoffcheckbox"))).click();
+    	dr.findElement(By.id(prop.getProperty("Feemanager.finewaiveoffcheckbox"))).click();
     }
     
     public static void selectfeecheckbox()
     {
-    	Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.selectfeecheckbox"))).click();
+    	dr.findElement(By.id(prop.getProperty("Feemanager.selectfeecheckbox"))).click();
     }
     
 	public static void validationinexcelupload()
     {
 		//Validate is excel uploaded
-    	Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.excelupload.uploadbutton"))).click();
-    	if(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.uploadbutton.validation"))).isEnabled())
+    	dr.findElement(By.name(prop.getProperty("Feemanager.excelupload.uploadbutton"))).click();
+    	if(dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.uploadbutton.validation"))).isEnabled())
     	{
-    		String error=Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.uploadbutton.validation"))).getText();
+    		String error=dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.uploadbutton.validation"))).getText();
     		System.out.println(error);
     		if("Please select file to upload.".equals(error))
     		{
@@ -120,15 +130,15 @@ public class Mycode {
     	}
     
     //Validating date format
-    Select s1 = new Select(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.Dateformat"))));
+    Select s1 = new Select(dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.Dateformat"))));
     String option= s1.getFirstSelectedOption().getText();
    //Assert.assertEquals("dd-MM-yyyy", option);
     Assert.assertSame("Date Format is incorrect", "dd-MM-yyyy", option);
     
     //Validating Select installment 
-    Select s2= new Select(Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.selectinstallment"))));
+    Select s2= new Select(dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.selectinstallment"))));
     s2.selectByValue("0");
-    String installment= Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.installmentvalidation"))).getText();
+    String installment= dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.installmentvalidation"))).getText();
     if("Please select Installment".equals(installment))
     {
     	System.out.println("Proper installment validation is showing!!");
@@ -141,22 +151,22 @@ public class Mycode {
     }
 	public static void submitfeebutton()
 	{
-		Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.submitfee"))).click();
+		dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.submitfee"))).click();
 	}
 	
 	public static int verifyifcheckboxselected()
 	{
-		WebElement table= Logindem.dr.findElement(By.cssSelector(prop.getProperty("Feemanager.excelupload.tablecss")));
+		WebElement table= dr.findElement(By.cssSelector(prop.getProperty("Feemanager.excelupload.tablecss")));
 		@SuppressWarnings("unchecked")
 		List<WebElement> row=(List<WebElement>) table.findElement(By.tagName("tr"));
 		int count=0;
 		for(int i =0; i<row.size();i++)
 		{
-			String status=Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.status"))).getText();
+			String status=dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.status"))).getText();
 			
 			if(status=="Ready To Upload")
 			{
-				boolean attr=Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.Checkbox"))).isSelected();
+				boolean attr=dr.findElement(By.id(prop.getProperty("Feemanager.excelupload.Checkbox"))).isSelected();
 				if(attr=true)
 				{
 					count++;
@@ -172,18 +182,18 @@ public class Mycode {
 	
 	 public  static void studentregistration()
 	 {
-		 Logindem.dr.findElement(By.xpath(Mycode.prop.getProperty("Admission.logo"))).click();
-		 action = new Actions(Logindem.dr);
-		    WebElement wb=Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Admission.mastersetting")));
+		 dr.findElement(By.xpath(Mycode.prop.getProperty("Admission.logo"))).click();
+		 action = new Actions(dr);
+		    WebElement wb=dr.findElement(By.linkText(Mycode.prop.getProperty("Admission.mastersetting")));
 		    action.moveToElement(wb).build().perform();
-		    action.moveToElement(Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.excelupload.studentregistration")))).click().build().perform();
+		    action.moveToElement(dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.excelupload.studentregistration")))).click().build().perform();
 	 }
 	 
 	 public  static void Locatetransactionreport()
 	 {
-		 Logindem.dr.findElement(By.xpath(Mycode.prop.getProperty("Feemanager.logo"))).click();
-		 action = new Actions(Logindem.dr);
-		    WebElement wb=Logindem.dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.transactionreport")));
+		 dr.findElement(By.xpath(Mycode.prop.getProperty("Feemanager.logo"))).click();
+		 action = new Actions(dr);
+		    WebElement wb=dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.transactionreport")));
 		    action.moveToElement(wb).build().perform();
 		    
 	 }
@@ -303,33 +313,34 @@ public class Mycode {
 	public static void feereportverification() throws IOException
 	 {
 		 //locate Daily Fee Collection DateWise report
-		 action.moveToElement(Logindem.dr.findElement(By.linkText(prop.getProperty("Feemanager.collection")))).build().perform();
-		 action.moveToElement(Logindem.dr.findElement(By.linkText(prop.getProperty("Feemanager.collection.DailyFeeCollectionDateWise")))).click().build().perform();
-		 Logindem.dr.switchTo().frame("Feemanager.Daily.frame.FeeCollectionDateWise");
-		 Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.dailyFeecollection.fromdate"))).click();
-		 Select sr1 = new Select(Logindem.dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.year"))));
+		 action.moveToElement(dr.findElement(By.linkText(prop.getProperty("Feemanager.collection")))).build().perform();
+		 action.moveToElement(dr.findElement(By.linkText(prop.getProperty("Feemanager.collection.DailyFeeCollectionDateWise")))).click().build().perform();
+		 dr.switchTo().frame("Feemanager.Daily.frame.FeeCollectionDateWise");
+		 dr.findElement(By.id(prop.getProperty("Feemanager.dailyFeecollection.fromdate"))).click();
+		 Select sr1 = new Select(dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.year"))));
 		 sr1.selectByValue("2016");
-		 Select sr2 = new Select(Logindem.dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.Month"))));
+		 Select sr2 = new Select(dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.Month"))));
 		 sr2.selectByValue("3");
-		 Logindem.dr.findElement(By.xpath(prop.getProperty("Feemanager.dailyFeecollection.Date"))).click();
+		 dr.findElement(By.xpath(prop.getProperty("Feemanager.dailyFeecollection.Date"))).click();
 		 
-		 Logindem.dr.findElement(By.id(prop.getProperty("Feemanager.dailyFeecollection.todate"))).click();
-		 Select sr3 = new Select(Logindem.dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.yearto"))));
+		 dr.findElement(By.id(prop.getProperty("Feemanager.dailyFeecollection.todate"))).click();
+		 Select sr3 = new Select(dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.yearto"))));
 		 sr3.selectByValue("2017");
-		 Select sr4 = new Select(Logindem.dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.Monthto"))));
+		 Select sr4 = new Select(dr.findElement(By.className(prop.getProperty("Feemanager.dailyFeecollection.Monthto"))));
 		 sr4.selectByValue("2");
-		 Logindem.dr.findElement(By.xpath(prop.getProperty("Feemanager.dailyFeecollection.Dateto"))).click();
-		 Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.showbtn"))).click();
+		 dr.findElement(By.xpath(prop.getProperty("Feemanager.dailyFeecollection.Dateto"))).click();
+		 dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.showbtn"))).click();
 		// WebDriverWait wb=new WebDriverWait(Logindem.dr,300);
 		 //wb.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("Feemanager.dailyfeecollection.Titlexpath"),"DAILY FEE COLLECTION DATE WISE"));
-		 String atrr=Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.showbtn"))).getAttribute("value");
+		 String atrr=dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.showbtn"))).getAttribute("value");
 		 while(atrr!="Show")
 		 {
-			  atrr=Logindem.dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.showbtn"))).getAttribute("value");
+			  atrr=dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.showbtn"))).getAttribute("value");
 		 }
-		 File scrFile = ((TakesScreenshot)Logindem.dr).getScreenshotAs(OutputType.FILE);
+		 File scrFile = ((TakesScreenshot)dr).getScreenshotAs(OutputType.FILE);
 		// Now you can do whatever you need to do with it, for example copy somewhere
-		FileUtils.copyFile(scrFile, new File("D:\\screensht\\dailyfeecollectiondatewise.png"));
+		FileUtils.copyFile(scrFile, new File("D:\\screensht\\dailyfeecollectiondatewise.png"));		
 	 }
+	
     
 }

@@ -9,13 +9,10 @@ import cucumber.api.java.en.When;
 
 public class Logindem{
 	
-	 public static WebDriver dr=null;
+	 
 	@Given("^URL$")
 	public void url() throws Throwable {
-	    System.setProperty("webdriver.chrome.driver", "D:\\selenium drivers\\chromedriver_win32new\\chromedriver.exe");
-	    dr=new ChromeDriver();
-	    dr.manage().window().maximize();
-		dr.get("http://qaerp.franciscanecare.net/Secure/");
+	    
 	   
 	}
 
