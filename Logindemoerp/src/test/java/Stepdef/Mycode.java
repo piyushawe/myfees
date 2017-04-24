@@ -37,7 +37,7 @@ public class Mycode {
 	static WebDriver dr=null;
 	 public static void url()
 	 {
-		 System.setProperty("webdriver.chrome.driver", "D:\\selenium drivers\\chromedriver_win32new\\chromedriver.exe");
+		 System.setProperty("webdriver.chrome.driver", "D:\\selenium drivers\\chromedriver_win32\\chromedriver.exe");
 		    dr=new ChromeDriver();
 		    dr.manage().window().maximize();
 			dr.get("http://qaerp.franciscanecare.net/Secure/");

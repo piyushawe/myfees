@@ -4,9 +4,9 @@ Feature: Logindemoerp
 
 
 Scenario: Verifydailyfeecollectiondatewisereport
-Given URL1
+Given URLL
 When Locatereports
-	Then verifyreport
+Then verifyreport
 	
 
 

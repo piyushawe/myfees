@@ -47,13 +47,13 @@ formatter.step({
 });
 formatter.step({
   "line": 12,
-  "name": "Selectallfilter feetype\"2\" and adjusttype \"2\" and selectinstallment \"3\"",
+  "name": "assertdateformat",
   "keyword": "Then "
 });
 formatter.step({
   "line": 13,
-  "name": "assertdateformat",
-  "keyword": "And "
+  "name": "Selectallfilter feetype\"2\" and adjusttype \"2\" and selectinstallment \"3\"",
+  "keyword": "Then "
 });
 formatter.step({
   "line": 14,
@@ -74,30 +74,27 @@ formatter.match({
   "location": "Logindem.url()"
 });
 formatter.result({
-  "duration": 16427213167,
-  "status": "passed"
+  "duration": 11879504806,
+  "error_message": "org.openqa.selenium.WebDriverException: unknown error: cannot get automation extension\nfrom unknown error: page could not be found: chrome-extension://aapnijgdinlhnhlmodcfapnahmbfebeb/_generated_background_page.html\n  (Session info: chrome\u003d57.0.2987.133)\n  (Driver info: chromedriver\u003d2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform\u003dWindows NT 6.1.7600 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 10.07 seconds\nBuild info: version: \u00273.1.0\u0027, revision: \u0027b94c902\u0027, time: \u00272017-02-16 12:21:31 -0800\u0027\nSystem info: host: \u0027PIYUSHNAUTIYAL-\u0027, ip: \u0027192.168.10.100\u0027, os.name: \u0027Windows 7\u0027, os.arch: \u0027amd64\u0027, os.version: \u00276.1\u0027, java.version: \u00271.8.0_45\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities [{applicationCacheEnabled\u003dfalse, rotatable\u003dfalse, mobileEmulationEnabled\u003dfalse, networkConnectionEnabled\u003dfalse, chrome\u003d{chromedriverVersion\u003d2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir\u003dC:\\Windows\\TEMP\\scoped_dir3644_27902}, takesHeapSnapshot\u003dtrue, pageLoadStrategy\u003dnormal, databaseEnabled\u003dfalse, handlesAlerts\u003dtrue, hasTouchScreen\u003dfalse, version\u003d57.0.2987.133, platform\u003dXP, browserConnectionEnabled\u003dfalse, nativeEvents\u003dtrue, acceptSslCerts\u003dtrue, locationContextEnabled\u003dtrue, webStorageEnabled\u003dtrue, browserName\u003dchrome, takesScreenshot\u003dtrue, javascriptEnabled\u003dtrue, cssSelectorsEnabled\u003dtrue, unexpectedAlertBehaviour\u003d}]\nSession ID: d90cd7a885e6f303ebb9e34ad40cd192\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:422)\r\n\tat org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:216)\r\n\tat org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:168)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:635)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:658)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:882)\r\n\tat Stepdef.Logindem.url(Logindem.java:17)\r\n\tat ✽.Given URL(src/main/resources/Excelupload.feature:7)\r\n",
+  "status": "failed"
 });
 formatter.match({
   "location": "Takefee.logindetails()"
 });
 formatter.result({
-  "duration": 216218356,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.match({
   "location": "Takefee.logintoerp()"
 });
 formatter.result({
-  "duration": 649274985,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.match({
   "location": "Excelupload.insertdatainexcel()"
 });
 formatter.result({
-  "duration": 318155933,
-  "error_message": "java.lang.IllegalStateException: Cannot get a NUMERIC value from a STRING cell\r\n\tat org.apache.poi.hssf.usermodel.HSSFCell.typeMismatch(HSSFCell.java:654)\r\n\tat org.apache.poi.hssf.usermodel.HSSFCell.getNumericCellValue(HSSFCell.java:679)\r\n\tat Stepdef.Excelupload.insertdatainexcel(Excelupload.java:59)\r\n\tat ✽.Then Insertdatainexcel(src/main/resources/Excelupload.feature:10)\r\n",
-  "status": "failed"
+  "status": "skipped"
 });
 formatter.match({
   "location": "Excelupload.uploadexcel()"
@@ -105,12 +102,28 @@ formatter.match({
 formatter.result({
   "status": "skipped"
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
 formatter.match({
   "location": "Excelupload.assertdateformat()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "2",
+      "offset": 24
+    },
+    {
+      "val": "2",
+      "offset": 43
+    },
+    {
+      "val": "3",
+      "offset": 69
+    }
+  ],
+  "location": "Excelupload.selectallfilter_feetype_and_adjusttype_and_selectinstallment(String,String,String)"
 });
 formatter.result({
   "status": "skipped"
