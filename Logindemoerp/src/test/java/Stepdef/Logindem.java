@@ -10,11 +10,11 @@ import cucumber.api.java.en.When;
 public class Logindem{
 	
 	 
-	@Given("^URL$")
+	/*@Given("^URL$")
 	public void url() throws Throwable {
 	    
 	   
-	}
+	}*/
 
 	@When("^logingdetails \"([^\"]*)\" and \"([^\"]*)\"$")
 	public void logingdetails_and(String arg1, String arg2) throws Throwable {

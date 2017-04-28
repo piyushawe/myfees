@@ -18,6 +18,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Assert; 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -344,7 +345,7 @@ public class Mycode {
 		 {
 			 ajaxattr= dr.findElement(By.name(prop.getProperty("Feemanager.dailyfeecollection.loaderAjax"))).getAttribute("display");
 		 }
-		 String imgAttr = dr.findElement(By.id("ctl00_ContentPlaceHolder1_ReportViewer1_AsyncWait_Wait")).getAttribute("display");
+		 String imgAttr = dr.findElement(By.id("Feemanager.dailyfeecollection.imgloader")).getAttribute("display");
 		 while(imgAttr!="none")
 		 {
 			 imgAttr=dr.findElement(By.id("Feemanager.dailyfeecollection.imgloader")).getAttribute("display");
@@ -357,6 +358,7 @@ public class Mycode {
 	{
 		dr.findElement(By.xpath(Mycode.prop.getProperty("Feemanager.logo")));
 		Takefee.action.moveToElement(dr.findElement(By.linkText(Mycode.prop.getProperty("Feemanager.transactionreport")))).build().perform();
+		//((JavascriptExecutor) dr).executeScript("return document.readyState").toString().equals("complete");
 	}
-    
+	
 }
