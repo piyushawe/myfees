@@ -1,7 +1,7 @@
 Feature: Logindemoerp
 
   Scenario Outline: Login
-    Given URL
+   Given URL
     When logingdetails "<username>" and "<password>"
     Then Loginbutton
 

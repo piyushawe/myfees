@@ -6,7 +6,7 @@ Feature: Logindemoerp
 Scenario: Excelupload
 Given URL
 When Logindetails
-Then LogintoERP
+ Then LogintoERP
 Then Insertdatainexcel
 Then Uploadexcel
 Then assertdateformat
