@@ -37,7 +37,7 @@ public class Mycode {
 	static Properties prop;
 	static WebDriver dr=null;
 	 public static void url()
-	 {
+	 {//
 		 System.setProperty("webdriver.chrome.driver", "D:\\selenium drivers\\chromedriver_win32\\chromedriver.exe");
 		    dr=new ChromeDriver();
 		    dr.manage().window().maximize();
