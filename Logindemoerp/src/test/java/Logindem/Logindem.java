@@ -21,7 +21,7 @@ public class Logindem{
 	@When("^logingdetails \"([^\"]*)\" and \"([^\"]*)\"$")
 	public void logingdetails_and(String arg1, String arg2) throws Throwable {
 	 //arg1.trim();
-	 //arg2.trim()s;
+	 //arg2.trim()ss;
 		//String login="admin";
 		  //  String password1="Admin@987";
 		   // if(login.equals(arg1) && 1password1.equals(arg2) )
